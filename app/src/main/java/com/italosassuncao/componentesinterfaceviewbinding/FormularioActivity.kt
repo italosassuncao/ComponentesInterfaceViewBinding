@@ -24,12 +24,18 @@ class FormularioActivity : AppCompatActivity() {
         with(binding) {
             btnEnviar.setOnClickListener {
                 //checkbox()
+                radioButton()
             }
 
-            cbEnviar.setOnCheckedChangeListener { _, isChecked ->
+            /*rbMasculino.setOnCheckedChangeListener { _, isChecked ->
+                val resultado = if (isChecked) "Masculino" else "Feminino"
+                textResultado.text = "Valor selecionado: $resultado"
+            }*/
+
+            /*cbEnviar.setOnCheckedChangeListener { _, isChecked ->
                 val resultado = if (isChecked) "Checkbox selecionado" else "Checkbox não selecionado"
                 textResultado.text = "Valor selecionado: $resultado"
-            }
+            }*/
 
             /*cbEnviar.setOnClickListener {
                 val selecionado = cbEnviar.isChecked
@@ -54,5 +60,29 @@ class FormularioActivity : AppCompatActivity() {
             }
             binding.textResultado.text = "Valor selecionado: $selecionado"
         }*/
+    }
+
+    private fun radioButton() {
+        val masculino = binding.rbMasculino.isChecked
+        //binding.textResultado.text = if(masculino) "Masculino" else "Feminino"
+
+        val idItemSelecionado = binding.rgSexo.checkedRadioButtonId
+        binding.textResultado.text = when(idItemSelecionado){
+            binding.rbMasculino.id -> "Masculino"
+            binding.rbFeminino.id -> "Feminino"
+            binding.rbNaoresponder.id -> "Não responder"
+            else -> "Não selecionado"
+        }
+        binding.rgSexo.clearCheck()
+
+
+        /*if (selecionado){
+
+        }else if(binding.rbFeminino.isChecked){
+
+        }else if(binding.rbNaoresponder.isChecked){
+
+        }*/
+
     }
 }
