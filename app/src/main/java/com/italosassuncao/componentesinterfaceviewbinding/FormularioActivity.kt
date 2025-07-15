@@ -1,12 +1,14 @@
 package com.italosassuncao.componentesinterfaceviewbinding
 
-import android.R.id.checkbox
 import android.os.Bundle
-import android.widget.CompoundButton
+import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.snackbar.Snackbar
 import kotlin.getValue
 import com.italosassuncao.componentesinterfaceviewbinding.databinding.ActivityFormularioBinding
 
@@ -25,7 +27,14 @@ class FormularioActivity : AppCompatActivity() {
             btnEnviar.setOnClickListener {
                 //checkbox()
                 //radioButton()
-                switchToggle()
+                //switchToggle()
+                exibirSnackBar(it)
+                //Toast.makeText(this, "Mensagem enviada", Toast.LENGTH_SHORT).show()
+                Snackbar.make(
+                    it,
+                    "Mensagem enviada",
+                    Snackbar.LENGTH_LONG
+                ).show()
             }
 
             /*rbMasculino.setOnCheckedChangeListener { _, isChecked ->
@@ -63,6 +72,25 @@ class FormularioActivity : AppCompatActivity() {
         }*/
     }
 
+    private fun exibirSnackBar(view: View) {
+        val snackbar = Snackbar.make(
+            view,
+            "Mensagem enviada",
+            Snackbar.LENGTH_LONG
+        )
+
+        snackbar.setAction("Desfazer") {
+            Toast.makeText(this, "Desfeito", Toast.LENGTH_SHORT).show()
+        }
+
+        snackbar.setTextColor(
+            ContextCompat.getColor(this, R.color.white)
+        )
+
+        snackbar.show()
+
+    }
+
     private fun switchToggle() {
         val switchMarcado = binding.switchNotificacoes.isChecked
         val toggleMarcado = binding.toggleAtivar.isChecked
@@ -74,7 +102,7 @@ class FormularioActivity : AppCompatActivity() {
         //binding.textResultado.text = if(masculino) "Masculino" else "Feminino"
 
         val idItemSelecionado = binding.rgSexo.checkedRadioButtonId
-        binding.textResultado.text = when(idItemSelecionado){
+        binding.textResultado.text = when (idItemSelecionado) {
             binding.rbMasculino.id -> "Masculino"
             binding.rbFeminino.id -> "Feminino"
             binding.rbNaoresponder.id -> "Não responder"
