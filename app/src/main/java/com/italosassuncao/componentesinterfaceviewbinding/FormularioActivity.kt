@@ -2,6 +2,7 @@ package com.italosassuncao.componentesinterfaceviewbinding
 
 import android.os.Bundle
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
@@ -24,6 +25,8 @@ class FormularioActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(binding.root)
 
+        spinnerExibicao()
+
         with(binding) {
             btnEnviar.setOnClickListener {
                 //checkbox()
@@ -31,7 +34,8 @@ class FormularioActivity : AppCompatActivity() {
                 //switchToggle()
                 //exibirSnackBar(it)
                 //Toast.makeText(this, "Mensagem enviada", Toast.LENGTH_SHORT).show()
-                caixaDialogoAlerta()
+                //caixaDialogoAlerta()
+                spinnerSelecionarItem()
             }
 
             /*rbMasculino.setOnCheckedChangeListener { _, isChecked ->
@@ -67,6 +71,32 @@ class FormularioActivity : AppCompatActivity() {
             }
             binding.textResultado.text = "Valor selecionado: $selecionado"
         }*/
+    }
+
+    private fun spinnerSelecionarItem() {
+        val itemSelecionado = binding.spinnerCategorias.selectedItem
+        val itemPosicao = binding.spinnerCategorias.selectedItemPosition
+
+        if(itemPosicao == 0){
+            binding.textResultado.text = "Nenhum item selecionado"
+        }else{
+            binding.textResultado.text = "Selecionado: $itemSelecionado - Posição: $itemPosicao"
+        }
+    }
+
+    private fun spinnerExibicao() {
+        binding.spinnerCategorias.adapter = ArrayAdapter (
+            this,
+            android.R.layout.simple_spinner_dropdown_item,
+            listOf(
+                "Selecione uma categoria",
+                "Eletrodomésticos",
+                "Roupas",
+                "Móveis",
+                "Cama",
+                "Banho"
+            )
+        )
     }
 
     private fun caixaDialogoAlerta() {
