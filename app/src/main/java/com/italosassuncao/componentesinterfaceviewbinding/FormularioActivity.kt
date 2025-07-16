@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
@@ -28,13 +29,9 @@ class FormularioActivity : AppCompatActivity() {
                 //checkbox()
                 //radioButton()
                 //switchToggle()
-                exibirSnackBar(it)
+                //exibirSnackBar(it)
                 //Toast.makeText(this, "Mensagem enviada", Toast.LENGTH_SHORT).show()
-                Snackbar.make(
-                    it,
-                    "Mensagem enviada",
-                    Snackbar.LENGTH_LONG
-                ).show()
+                caixaDialogoAlerta()
             }
 
             /*rbMasculino.setOnCheckedChangeListener { _, isChecked ->
@@ -70,6 +67,55 @@ class FormularioActivity : AppCompatActivity() {
             }
             binding.textResultado.text = "Valor selecionado: $selecionado"
         }*/
+    }
+
+    private fun caixaDialogoAlerta() {
+
+        // Versao de código reduzida usando encadeamento de método
+        AlertDialog.Builder(this)
+            .setTitle("Confirmar exclusão?")
+            .setMessage("Deseja excluir a mensagem?")
+            .setNegativeButton("Não") { _, _ ->
+                Toast.makeText(this,
+                    "Operação cancelada",
+                    Toast.LENGTH_SHORT).show()
+            }
+            .setPositiveButton("Sim") { _, _ ->
+                Toast.makeText(this,
+                    "Mensagem excluida",
+                    Toast.LENGTH_SHORT).show()
+            }
+            .setIcon(R.drawable.ic_alerta_24)
+            .setCancelable(false)
+            .create()
+            .show()
+
+        // Versao de código longa
+        /*val builder = AlertDialog.Builder(this)
+        builder.setTitle("Confirmar exclusão?")
+        builder.setMessage("Deseja excluir a mensagem?")
+        builder.setNegativeButton("Não") { _, _ ->
+            Toast.makeText(this,
+                "Operação cancelada",
+                Toast.LENGTH_SHORT).show()
+        }
+        builder.setPositiveButton("Sim") { _, _ ->
+            Toast.makeText(this,
+                "Mensagem excluida",
+                Toast.LENGTH_SHORT).show()
+        }
+
+        builder.setIcon(R.drawable.ic_alerta_24)
+
+        builder.setCancelable(false)
+        builder.setNeutralButton("Ajuda"){ _, _ ->
+            Toast.makeText(this,
+                "Operação cancelada",
+                Toast.LENGTH_SHORT).show()
+        }
+
+        val dialog = builder.create()
+        dialog.show()*/
     }
 
     private fun exibirSnackBar(view: View) {
