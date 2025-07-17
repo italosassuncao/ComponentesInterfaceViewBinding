@@ -2,6 +2,7 @@ package com.italosassuncao.componentesinterfaceviewbinding
 
 import android.os.Bundle
 import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -85,18 +86,46 @@ class FormularioActivity : AppCompatActivity() {
     }
 
     private fun spinnerExibicao() {
+        /*val categorias = resources.getStringArray(R.array.categorias)
         binding.spinnerCategorias.adapter = ArrayAdapter (
             this,
             android.R.layout.simple_spinner_dropdown_item,
-            listOf(
+            categorias*/
+
+        binding.spinnerCategorias.adapter = ArrayAdapter.createFromResource(
+            this,
+            R.array.categorias,
+            android.R.layout.simple_spinner_dropdown_item
+        )
+
+            /*listOf(
                 "Selecione uma categoria",
                 "Eletrodomésticos",
                 "Roupas",
                 "Móveis",
                 "Cama",
                 "Banho"
-            )
-        )
+            )*/
+        //)
+
+        /*binding.spinnerCategorias.onItemSelectedListener = object
+            : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                //val itemSelecionado = parent?.getItemAtPosition(position)
+                val itemSelecionado = parent?.selectedItem
+                binding.textResultado.text = itemSelecionado.toString()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+
+        }*/
     }
 
     private fun caixaDialogoAlerta() {

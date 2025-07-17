@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">ComponentesInterfaceViewBinding</string>
+
+    <string-array name="categorias">
+        <item>Selecione uma categoria</item>
+        <item>Eletrodomésticos</item>
+        <item>Roupas</item>
+        <item>Móveis</item>
+        <item>Cama</item>
+        <item>Banho</item>
+    </string-array>
 </resources>
