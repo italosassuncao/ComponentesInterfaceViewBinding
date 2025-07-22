@@ -42,9 +42,55 @@ class ToolbarActionbarActivity : AppCompatActivity() {
         binding.tbPrincipal.setTitleTextColor(
             ContextCompat.getColor(this, R.color.white)
         )
+
+        /*binding.tbPrincipal.inflateMenu(R.menu.menu_principal)
+        binding.tbPrincipal.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.item_adicionar -> {
+                    Toast.makeText(
+                        applicationContext,
+                        "Adicionar",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    return@setOnMenuItemClickListener true
+                }
+
+                R.id.item_pesquisar -> {
+                    Toast.makeText(
+                        applicationContext,
+                        "Pesquisar",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    return@setOnMenuItemClickListener true
+                }
+
+                R.id.item_configuracoes -> {
+                    Toast.makeText(
+                        applicationContext,
+                        "Configurações",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    return@setOnMenuItemClickListener true
+                }
+
+                R.id.item_sair -> {
+                    Toast.makeText(
+                        applicationContext,
+                        "Sair",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    return@setOnMenuItemClickListener true
+                }
+                else -> {
+                    return@setOnMenuItemClickListener true
+                }
+            }
+        }*/
+
         //binding.tbPrincipal.subtitle = "Mais Detalhes"
 
         setSupportActionBar(binding.tbPrincipal)
+        inicializarActionBar()
     }
 
     private fun inicializarActionBar() {
