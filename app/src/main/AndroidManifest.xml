@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ComponentesInterfaceViewBinding">
         <activity
+            android:name=".NovaActivity"
+            android:exported="false" />
+        <activity
             android:name=".FormularioActivity"
             android:exported="false" />
         <activity
