@@ -13,6 +13,7 @@
         android:theme="@style/Theme.ComponentesInterfaceViewBinding">
         <activity
             android:name=".NovaActivity"
+            android:parentActivityName=".ToolbarActionbarActivity"
             android:exported="false" />
         <activity
             android:name=".FormularioActivity"
